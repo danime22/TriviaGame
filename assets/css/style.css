@@ -69,11 +69,12 @@ p{
     font-weight: bold;
     color: aliceblue;
     margin-left: 10%;
-}
-
-button {
     width: 80%;
 }
+
+/* button {
+    width: 80%;
+} */
 
 #points {
     height: 80px;
@@ -135,4 +136,19 @@ img {
     font-weight: bold;
     font-family: fantasy;
     margin-left: 40%;
+}
+
+#next {
+    width:148px;
+    height: 56px;
+    background-color: #FFFCE3;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+    font-family: fantasy;
+    margin-left: 40%;
+    display: none;
+   
+
 }

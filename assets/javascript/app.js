@@ -66,9 +66,11 @@ var strangerState = {
     // correctMe: "",
     // wrongAnswer: "",
     // images: "",
-    points: "",
-    timer: "",
-    currentQuestion:0
+    points: 1,
+    // timer: "",
+    currentQuestion:0,
+    // gameStart:false,
+    questionAnswered: false
 
 
 };
@@ -81,7 +83,8 @@ $(document).ready(function () {
         $("#start").hide();
         console.log("start");
         counter = setInterval(timer, 1000);
-
+        gameStart=true;
+        $("#next").show(); 
         question();
         timer();
         choices();
@@ -89,7 +92,7 @@ $(document).ready(function () {
 });
 
 function question() {
-
+    strangerThings.questionAnswered = false;
     $("#question").text(strangerThings[strangerState.currentQuestion].question);
 
 }
@@ -107,7 +110,7 @@ function choices() {
 function timer() {
     time--;
     if (time <= 0) {
-        clearInterval(counter);
+        // clearInterval(counter);
         return;
     }
     $("#timer").html("<h3>" + "Timer : " + time + "</h3>");
@@ -135,7 +138,9 @@ function timer() {
 
 $("#choice0").on("click", function(){
     handleUserChoice(0);
+  
     console.log("1");
+  
 })
 
 $("#choice1").on("click", function(){
@@ -157,16 +162,46 @@ $("#choice3").on("click", function(){
 
 function handleUserChoice(userChoice)
 {
+    if(strangerState.questionAnswered) {return;}
+
+    strangerState.questionAnswered = true;
     if(userChoice == strangerThings[strangerState.currentQuestion].correctAnswer) {
+        $("#points").append(strangerState.points);
+        strangerState.points++;
+        stop();
         console.log("right");
+        console.log(strangerState.points);
 
     }else {
         console.log("wrong");
+        stop();
+        gameStart = false;
     }
 }
 
 
-function correctGuess() {
-    strangerState.correctMe = strangerThings[0].correctAnswer;
-    console.log("correct");
+function stop() {
+    clearInterval(counter);
+    console.log("stop");
 }
+
+// function nextQuestion() {
+// $("#next").text("Next");
+
+// }
+
+// function nextQuestion() {
+//     var btn = document.createElement("BUTTON");
+//     var t = document.createTextNode("CLICK ME");
+//     btn.appendChild(t);
+//     document.body.appendChild(btn);
+// }
+
+
+// function nextQuestion() {
+//    $("#next").show();
+// }
+// function correctGuess() {
+//     strangerState.correctMe = strangerThings[0].correctAnswer;
+//     console.log("correct");
+// }
