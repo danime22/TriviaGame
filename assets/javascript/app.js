@@ -62,12 +62,13 @@ var strangerThings = [
 ];
 
 var strangerState = {
-    userChoice: "",
-    correctAnswer: "",
-    wrongAnswer: "",
-    images: "",
+    // userChoice: "",
+    // correctMe: "",
+    // wrongAnswer: "",
+    // images: "",
     points: "",
     timer: "",
+    currentQuestion:0
 
 
 };
@@ -84,27 +85,24 @@ $(document).ready(function () {
         question();
         timer();
         choices();
-    })
-
-    function question() {
-
-        $("#question").text(strangerThings[0].question);
-
-    };
-
-
+    });
 });
+
+function question() {
+
+    $("#question").text(strangerThings[strangerState.currentQuestion].question);
+
+}
 
 
 function choices() {
-    var choicesArr = strangerThings[0].choices;
-    // $("#aChoice").text(strangerThings[0].choices);
-    
-    for(i=0; i<choicesArr.length; i++) {
-        var buut = $("#choice"+ i);
+    var choicesArr = strangerThings[strangerState.currentQuestion].choices;
+
+    for (i = 0; i < choicesArr.length; i++) {
+        var buut = $("#choice" + i);
         buut.text(choicesArr[i]);
     }
-};
+}
 
 function timer() {
     time--;
@@ -117,3 +115,58 @@ function timer() {
 
 }
 
+
+
+// $("button").on("click", function (r) {
+//     console.log("dave dummy");
+//     strangerState.userChoice = strangerThings.choices;
+//     // strangerThings[0].correctAnswer;
+//     if (strangerState.userChoice != strangerThings[0].correctAnswer) {
+       
+//         // alert("wrong");
+//     } else if (strangerState.userChoice === strangerThings[0].correctAnswer) {
+//       points++;
+//         // alert("correct");
+//     }
+
+
+
+// });
+
+$("#choice0").on("click", function(){
+    handleUserChoice(0);
+    console.log("1");
+})
+
+$("#choice1").on("click", function(){
+    handleUserChoice(1);
+    console.log("2");
+})
+
+$("#choice2").on("click", function(){
+    handleUserChoice(2);
+    console.log("3");
+})
+
+$("#choice3").on("click", function(){
+    handleUserChoice(3);
+    console.log("4");
+})
+
+
+
+function handleUserChoice(userChoice)
+{
+    if(userChoice == strangerThings[strangerState.currentQuestion].correctAnswer) {
+        console.log("right");
+
+    }else {
+        console.log("wrong");
+    }
+}
+
+
+function correctGuess() {
+    strangerState.correctMe = strangerThings[0].correctAnswer;
+    console.log("correct");
+}
