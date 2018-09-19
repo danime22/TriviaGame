@@ -3,7 +3,8 @@ var strangerThings = [
         question: "Where does Season 1's suspenseful opening scene take place?",
         choices: ["Laboratory", "Spaceship", "The Byer's House", "A creepy farm in the middle of nowhere"],
         correctAnswer: "0",
-        img: "assets/images/Hawkins_Lab_aerial_view.png"
+        img: "assets/images/Hawkins_Lab_aerial_view.png",
+        trivia:"The Hawkins National Laboratory was a federal complex located in Hawkins Indiana. It was likely controlled by the CIA and NSA. The lab was headed by Dr. Martin Benner until the events of November 1983, whereafter Dr. Sam Owens took over as Director of Operations.  In the mid 20th century, the lab was host to MKUltra experiments, and at some point began abducting children to experiment on as well. During experiment, a child test subject named Eleven made to the Upside Down.<a  src= “http://strangerthings.wikia.com/wiki/Hawkins_National_Laboratory”>" 
     },
     {
         question: "Where does the story occur?",
@@ -72,19 +73,20 @@ var strangerState = {
 
 };
 
-var time = 16;
+var time = 11;
+var counter;
 
 $(document).ready(function () {
 
     $("#start").on("click", function () {
         $("#start").hide();
         console.log("start");
-        counter = setInterval(timer, 1000);
+        
         gameStart = true;
         $("#next").show();
         setUpNextQuestion();
-        // var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
-        // audio.play();
+        var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
+        audio.play();
     });
 });
 
@@ -92,7 +94,10 @@ function setUpNextQuestion() {
     question();
     choices();
 
+    time = 11;
+    counter = setInterval(timer, 1000);
     timer();
+
 
     //$("#next").attr("disabled", true);
     strangerState.questionAnswered = false;
@@ -116,7 +121,8 @@ function choices() {
 function timer() {
     time--;
     if (time <= 0) {
-        // clearInterval(counter);
+       stop();
+       handleUserChoice(-1);
         return;
     }
     $("#timer").html("<h3>" + "Timer : " + time + "</h3>");
@@ -158,15 +164,19 @@ function handleUserChoice(userChoice) {
     if (userChoice == strangerThings[strangerState.currentQuestion].correctAnswer) {
         $("#points").text("Points : " + strangerState.points);
         strangerState.points++;
+        $("#question").html("<h1>" + "CORRECT !!" + "</h1>");
+        // $("#trivia").show();       
+        // $("#butDiv").hide();
         stop();
-
-        $("#choice0").css("background-color", "red");
         console.log("right");
         console.log(strangerState.points);
+    
 
 
     } else {
-
+        $("#question").html("<h1>" + "STUPID !!" + "</h1>");
+        // $("#butDiv").hide();
+        // $("#trivia").show(); 
         console.log("wrong");
         stop();
         gameStart = false;
@@ -188,8 +198,31 @@ $("#next").on("click", function () {
     strangerState.currentQuestion++;
     console.log("NEXT!!!");
     setUpNextQuestion();
-    setInterval(timer, 1000);
+   //counter = setInterval(timer, 1000);
+   //rest();
+    // time === 16;
    
 })
+
+
+
+// function rest() {
+//     var a = 15;
+//     clearInterval(time);
+//     timer = setInterval(function(){
+//         $("#timer").text(a--);
+//         if(a== -1) {
+//             clearInterval(timer);
+            
+//         }
+//     }, 1000)
+
+
+    
+// }
+
+
+
+
 
 
