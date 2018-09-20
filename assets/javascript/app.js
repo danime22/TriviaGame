@@ -95,6 +95,7 @@ $(document).ready(function () {
         setUpNextQuestion();
         var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
         // audio.play();
+     
     });
 });
 
@@ -197,8 +198,6 @@ function handleUserChoice(userChoice) {
    $("#imahe").show();
     $("#butDiv").hide();
 
-
-
 }
 
 
@@ -217,6 +216,27 @@ $("#next").on("click", function () {
    
 })
 
+// function ending() {
+//     if (strangerThings[strangerState.currentQuestion].question === strangerThings.question) {
+//         alert("done");
+//     }
+//     if(strangerState.points <= 5) {
+//         alert("loser");
+//     } else if (strangerState.points == 10) {
+//         alert("damn good");
+//     } else {
+//         alert("not bad");
+//     }
 
 
+//     gameStart = false;
+// }
+
+// ending();
+
+function gameOver() {
+    if (strangerState.currentQuestion == strangerThings.length) {
+        alert("game over");
+    }
+}
 
