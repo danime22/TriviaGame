@@ -64,7 +64,7 @@ var strangerThings = [
     },
     {
         question: "The parallel dimension inhabited by the Demogorgon is referred to as?",
-        choices: ["The butterfly effect", "The dark world", "The upside down", "The other place"],
+        choices: ["The Butterfly Effect", "The Dark World", "The Upside Down", "The other place"],
         correctAnswer: 2,
         img: "assets/images/Wiki-background.jpg",
         trivia: "The Upside Down is an alternate dimension existing in parallel to the human world. Most, if not all, flora and fauna present in the dimension are linked together in a hive mind controlled by the Mind Flayer, essentially forming an enormous superorganism. A key component of this hive mind was a species of humanoid predators, dubbed Demogorgons, which originated from the dimension."

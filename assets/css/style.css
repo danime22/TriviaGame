@@ -109,11 +109,12 @@ p{
 
 
 img {
-    height: 97px;   
+    height: 250px;   
     border: 1px solid black;
     border-radius: 5px;
-    width: 12%;
-    float: left;
+    width: 150%;
+    margin-left: -65%;
+    /* float: left; */
 }
 
 #wrap:after {
