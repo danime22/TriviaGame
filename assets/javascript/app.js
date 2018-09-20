@@ -182,7 +182,7 @@ function handleUserChoice(userChoice) {
     
 
     } else {
-        $("#question").html("<h1>" + "DUMMY!  The answer is : " + "</h1>");
+        $("#question").html("<h1>" + "WRONG!  The answer is : " + "</h1>");
         $("#butDiv").hide();
         $("#trivia").show(); 
         console.log("wrong");
