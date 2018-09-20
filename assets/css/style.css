@@ -154,14 +154,27 @@ img {
 }
 
 #trivia {
-    border:2px solid black;
-    border-radius: 10px;
+    /* border:2px solid black; */
+    /* border-radius: 10px; */
     height:420px;
     width: 725px;
     margin: auto;
     display: none;
-
+    color: #0B012B;
+    font-family: 'Bree Serif', serif;
+    font-weight: bold;
 }
+
+
+/* #imahe{
+    height: 97px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 12%;
+    position: relative;
+    float: left;
+
+} */
 
 #myAudio {
     display: none;

@@ -10,55 +10,64 @@ var strangerThings = [
         question: "Where does the story occur?",
         choices: ["Kansas", "Indiana", "New York", "Texas"],
         correctAnswer: 1,
-        img: "assets/images/TS_Mens_Come_and_Visit_Hawkins_Indiana_Stranger_Things_Inspired_Ringer_T_Shirt_19_99_Print-617-662.jpg"
+        img: "assets/images/TS_Mens_Come_and_Visit_Hawkins_Indiana_Stranger_Things_Inspired_Ringer_T_Shirt_19_99_Print-617-662.jpg",
+        trivia: "Stranger Things is set in the fictional rural town of Hawkins, Indiana, during the early 1980s. The nearby Hawkins National Laboratory ostensibly performs scientific research for the United States Department of Energy, but secretly does experiments into the paranormal and supernatural, including those that involve human test subjects. Inadvertently, they have created a portal to an alternate dimension called 'the Upside Down'. The influence of the Upside Down starts to affect the unknowing residents of Hawkins in calamitous ways."
     },
     {
         question: "Name the game that boys are always playing",
         choices: ["Dungeon & Dragons", "Super Mario Bros", "The Legend of Zelda", "Pac-Man"],
         correctAnswer: 0,
-        img: "assets/images/1_zU8flPMxg-k5Dxr7RU_LYQ.jpeg"
+        img: "assets/images/1_zU8flPMxg-k5Dxr7RU_LYQ.jpeg",
+        trivia: "Dungeons & Dragons is a fantasy tabletop role-playing game first published in 1974. It is a popular activity with Mike, Lucas, Will, and Dustin, who play the 1983 Expert edition of the game in Mike's basement. They use the game's elements and monsters to describe and explain the otherwise unknown forces that plague Hawkins."
     },
     {
         question: "What is El's favorite food?",
         choices: ["Eggos", "Twinkies", "Pop-Tarts", "Ice cream"],
         correctAnswer: 0,
-        img: "assets/images/elevennetflix.jpg"
+        img: "assets/images/elevennetflix.jpg",
+        trivia: "Desperate and all by herself, Eleven strolls into a supermarket and casually steals all of the Eggo waffles it has to offer. She causes a huge scene when, after the manager yells at her, she shatters the store's windows and walks out."
     },
     {
         question: "The Hawkins National Laboratory who kidnapped Eleven and unleashing the monster poses is connected to to?",
         choices: ["The Department of Health and Human Services", "The Department of Homeland Security", "The Department of Energy", "The Department of Defense"],
         correctAnswer: 2,
-        img: "assets/images/download (1).jpeg"
+        img: "assets/images/download (1).jpeg",
+        trivia: "The Hawkins National Laboratory, connected to the U.S. Department of Energy, was a federal complex located in Hawkins, Indiana. It was most likely controlled by the CIA or NSA, and was one of several national laboratories which grew out of the scientific endeavors of World War II. It controlled several subsidiaries, including Hawkins Power and Light.[1] The lab was headed by Dr. Martin Brenner until the events of November 1983, whereafter Dr. Sam Owens took over as Director of Operations."
     },
     {
         question: "What is Eleven's superpower?",
         choices: ["Superhuman Strength", "Telepathy", "Telekinesis", "Superhuman Speed"],
         correctAnswer: 2,
-        img: "assets/images/103_009r-2-425fe509-fed0-40dc-8c1e-8f67659bcaeb.jpg"
+        img: "assets/images/103_009r-2-425fe509-fed0-40dc-8c1e-8f67659bcaeb.jpg",
+        trivia: "Eleven was kidnapped and raised in Hawkins National Laboratory, where she was experimented on for her inherited psychokinetic abilities. After escaping the lab, she was found by Mike, Lucas, and Dustin. Upon discovering her abilities, Mike believed that she could help find Will, their missing friend. "
     },
     {
         question: "What do the boys call the terrifying, faceless creature",
         choices: ["Sauron", "Godzilla", "The Thing", "Demogorgon"],
         correctAnswer: 3,
-        img: "assets/images/Demogorgon_-_Chapter_Eight.jpg"
+        img: "assets/images/Demogorgon_-_Chapter_Eight.jpg",
+        trivia: "The Demogorgon, also known as the Monster, was a predatory humanoid creature that entered Hawkins, Indiana in November 1983. The creature originated from the parallel dimension known as the Upside Down. When Eleven, a psychic test subject from Hawkins National Laboratory, made interdimensional contact with it, a gate between dimensions opened at the lab."
     },
     {
         question: "How does Joyce communicate with herson Will when he is taken? ",
         choices: ["By painting on the wall", "With christmas lights", "Through sensory deprivation", "Through a mirror"],
         correctAnswer: 1,
-        img: "assets/images/https_%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F248885%2F640.jpg"
+        img: "assets/images/https_%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F248885%2F640.jpg",
+        trivia: "Chester(Chester was the pet dog of Joyce, Jonathan and Will Byers, which lived with them at their house ) later watched as Joyce hung Christmas lights around the house in order to communicate with Will. It later visited Castle Byers on the day of Will's 'funeral'."
     },
     {
         question: "What is the name of Mikes's sister?",
         choices: ["Nancy", "Barb", "Ellie", "Millie"],
         correctAnswer: 0,
-        img: "assets/images/f010c8f2-2876-4870-83c4-93d57f8155f7.jpg"
+        img: "assets/images/f010c8f2-2876-4870-83c4-93d57f8155f7.jpg",
+        trivia: "Nancy was the first child of Karen and Ted Wheeler, and she would later be joined by younger siblings Mike and Holly. Together, the family of five lived at their home in Hawkins, Indiana."
     },
     {
         question: "The parallel dimension inhabited by the Demogorgon is referred to as?",
         choices: ["The butterfly effect", "The dark world", "The upside down", "The other place"],
         correctAnswer: 2,
-        img: "assets/images/Wiki-background.jpg"
+        img: "assets/images/Wiki-background.jpg",
+        trivia: "The Upside Down is an alternate dimension existing in parallel to the human world. Most, if not all, flora and fauna present in the dimension are linked together in a hive mind controlled by the Mind Flayer, essentially forming an enormous superorganism. A key component of this hive mind was a species of humanoid predators, dubbed Demogorgons, which originated from the dimension."
     },
 ];
 
@@ -85,7 +94,7 @@ $(document).ready(function () {
         $("#next").show();
         setUpNextQuestion();
         var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
-        audio.play();
+        // audio.play();
     });
 });
 
@@ -93,6 +102,7 @@ function setUpNextQuestion() {
     question();
     choices();
     $("#butDiv").show();
+    $("#trivia").hide();    
     time = 11;
     counter = setInterval(timer, 1000);
     timer();
@@ -169,12 +179,10 @@ function handleUserChoice(userChoice) {
        
         console.log("right");
         console.log(strangerState.points);
-        // console.log(strangerThings[0].trivia);
-        // console.log(strangerThings[0].img + "hey");
-
+    
 
     } else {
-        $("#question").html("<h1>" + "WRONG !!" + "</h1>");
+        $("#question").html("<h1>" + "DUMMY!  The answer is : " + "</h1>");
         $("#butDiv").hide();
         $("#trivia").show(); 
         console.log("wrong");
@@ -184,9 +192,9 @@ function handleUserChoice(userChoice) {
     }
     var answer = strangerThings[strangerState.currentQuestion].choices[strangerThings[strangerState.currentQuestion].correctAnswer];
     $("#trivia").show();
- 
+    // $("#imahe").show();
     $("#trivia").html("<h1>" + answer + "</h1><br>" + strangerThings[strangerState.currentQuestion].trivia);
-    $('#imahe').append("<img src='" + strangerThings[0].img + "'>");
+    $('#imahe').append("<img src='" + strangerThings[strangerState.currentQuestion].img + "'>");
    
     // $("#")
     // $('#trivia').css({
