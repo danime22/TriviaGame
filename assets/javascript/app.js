@@ -192,14 +192,9 @@ function handleUserChoice(userChoice) {
     }
     var answer = strangerThings[strangerState.currentQuestion].choices[strangerThings[strangerState.currentQuestion].correctAnswer];
     $("#trivia").show();
-    // $("#imahe").show();
     $("#trivia").html("<h1>" + answer + "</h1><br>" + strangerThings[strangerState.currentQuestion].trivia);
-    $('#imahe').append("<img src='" + strangerThings[strangerState.currentQuestion].img + "'>");
-   
-    // $("#")
-    // $('#trivia').css({
-    //     background: "-webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000))" 
-    // });
+    $('#imahe').html("<img src='" + strangerThings[strangerState.currentQuestion].img + "'>");
+   $("#imahe").show();
     $("#butDiv").hide();
 
 
@@ -217,6 +212,7 @@ $("#next").on("click", function () {
     strangerState.currentQuestion++;
     console.log("NEXT!!!");
     setUpNextQuestion();
+    $("#imahe").hide();
 
    
 })
