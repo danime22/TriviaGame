@@ -10,9 +10,19 @@
 
 }
 
+#opening {
+    background-image: url("../images/dummy.png");
+    height: 700px;
+   width: 100%;
+    background-position:top;
+    background-size: cover;
+    /* opacity: 0.6; */
+}
+
 p{
     font-family: fantasy;
     font-weight: bold;
+   
 }
 
 
@@ -24,10 +34,6 @@ p{
 ;
 }
 
-/* h5 {
-    font-family: 'Bungee Shade', cursive;
-    font-family: 'Nosifer', cursive;
-} */
 
 #remaining {
     height: 196px;

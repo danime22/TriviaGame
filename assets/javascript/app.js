@@ -4,7 +4,7 @@ var strangerThings = [
         choices: ["Laboratory", "Spaceship", "The Byer's House", "A creepy farm in the middle of nowhere"],
         correctAnswer: 0,
         img: "assets/images/Hawkins_Lab_aerial_view.png",
-        trivia:"The Hawkins National Laboratory was a federal complex located in Hawkins Indiana. It was likely controlled by the CIA and NSA. The lab was headed by Dr. Martin Benner until the events of November 1983, whereafter Dr. Sam Owens took over as Director of Operations.  In the mid 20th century, the lab was host to MKUltra experiments, and at some point began abducting children to experiment on as well. During experiment, a child test subject named Eleven made to the Upside Down.<a  src= “http://strangerthings.wikia.com/wiki/Hawkins_National_Laboratory”>" 
+        trivia: "The Hawkins National Laboratory was a federal complex located in Hawkins Indiana. It was likely controlled by the CIA and NSA. The lab was headed by Dr. Martin Benner until the events of November 1983, whereafter Dr. Sam Owens took over as Director of Operations.  In the mid 20th century, the lab was host to MKUltra experiments, and at some point began abducting children to experiment on as well. During experiment, a child test subject named Eleven made to the Upside Down.<a  src= “http://strangerthings.wikia.com/wiki/Hawkins_National_Laboratory”>"
     },
     {
         question: "Where does the story occur?",
@@ -86,16 +86,25 @@ var time = 11;
 var counter;
 
 $(document).ready(function () {
-
+    $("#points").hide();
+    $("#question").hide();
+    $("#butDiv").hide();
+    $(".reset").hide();
+    $("#timer").hide();
     $("#start").on("click", function () {
+        $("#question").show();
+        $("#butDiv").show();
+        $(".reset").show();
+        $("#timer").show();
+        $("#opening").hide();
         $("#start").hide();
-        console.log("start");       
+        console.log("start");
         gameStart = true;
         $("#next").show();
         setUpNextQuestion();
         var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
         // audio.play();
-     
+
     });
 });
 
@@ -103,13 +112,11 @@ function setUpNextQuestion() {
     question();
     choices();
     $("#butDiv").show();
-    $("#trivia").hide();    
+    $("#trivia").hide();
     time = 11;
     counter = setInterval(timer, 1000);
     timer();
 
-
-    //$("#next").attr("disabled", true);
     strangerState.questionAnswered = false;
 
 }
@@ -131,8 +138,8 @@ function choices() {
 function timer() {
     time--;
     if (time <= 0) {
-       stop();
-       handleUserChoice(-1);
+        stop();
+        handleUserChoice(-1);
         return;
     }
     $("#timer").html("<h3>" + "Timer : " + time + "</h3>");
@@ -167,7 +174,7 @@ $("#choice3").on("click", function () {
 
 function handleUserChoice(userChoice) {
     console.log(userChoice);
-  
+
     if (strangerState.questionAnswered) { return; }
 
     stop();
@@ -177,25 +184,25 @@ function handleUserChoice(userChoice) {
         $("#points").text("Points : " + strangerState.points);
         strangerState.points++;
         $("#question").html("<h1>" + "CORRECT !!" + "</h1>");
-       
+
         console.log("right");
         console.log(strangerState.points);
-    
+
 
     } else {
         $("#question").html("<h1>" + "WRONG!  The answer is : " + "</h1>");
         $("#butDiv").hide();
-        $("#trivia").show(); 
+        $("#trivia").show();
         console.log("wrong");
         gameStart = false;
-        
+
 
     }
     var answer = strangerThings[strangerState.currentQuestion].choices[strangerThings[strangerState.currentQuestion].correctAnswer];
     $("#trivia").show();
     $("#trivia").html("<h1>" + answer + "</h1><br>" + strangerThings[strangerState.currentQuestion].trivia);
     $('#imahe').html("<img src='" + strangerThings[strangerState.currentQuestion].img + "'>");
-   $("#imahe").show();
+    $("#imahe").show();
     $("#butDiv").hide();
 
 }
@@ -213,30 +220,21 @@ $("#next").on("click", function () {
     setUpNextQuestion();
     $("#imahe").hide();
 
-   
+
+
 })
 
-// function ending() {
-//     if (strangerThings[strangerState.currentQuestion].question === strangerThings.question) {
-//         alert("done");
-//     }
-//     if(strangerState.points <= 5) {
-//         alert("loser");
-//     } else if (strangerState.points == 10) {
-//         alert("damn good");
-//     } else {
-//         alert("not bad");
-//     }
-
-
-//     gameStart = false;
-// }
-
-// ending();
 
 function gameOver() {
     if (strangerState.currentQuestion == strangerThings.length) {
-        alert("game over");
+        gameStart = false;
+        $("#opening").show();
+        $("#opening").html("<h1>CONGRATULATIONS!! Your score is: </h1>" + points);
+        $("#question").hide();
+        $("#butDiv").hide();
+        $(".reset").hide();
+        $("#timer").hide();
+
     }
 }
 
