@@ -163,18 +163,22 @@ img {
     color: #0B012B;
     font-family: 'Bree Serif', serif;
     font-weight: bold;
+    font-size: 22px;
 }
 
 
-/* #imahe{
-    height: 97px;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 12%;
-    position: relative;
-    float: left;
+#imahe{
+ margin-left: 45%;
+ font-family: 'Bree Serif', serif;
+ 
+/* align-content: center; */
+}
 
-} */
+h1 {
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+    font-weight: bold;
+}
 
 #myAudio {
     display: none;
