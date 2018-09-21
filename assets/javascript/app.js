@@ -52,7 +52,7 @@ var strangerThings = [
         question: "How does Joyce communicate with herson Will when he is taken? ",
         choices: ["By painting on the wall", "With christmas lights", "Through sensory deprivation", "Through a mirror"],
         correctAnswer: 1,
-        img: "assets/images/https_%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F248885%2F640.jpg",
+        img: "assets/images/Joyce_communicates.jpg",
         trivia: "Chester(Chester was the pet dog of Joyce, Jonathan and Will Byers, which lived with them at their house ) later watched as Joyce hung Christmas lights around the house in order to communicate with Will. It later visited Castle Byers on the day of Will's 'funeral'."
     },
     {
@@ -73,7 +73,7 @@ var strangerThings = [
 
 var strangerState = {
 
-    points: 1,
+    points: 0,
 
     currentQuestion: 0,
 
@@ -91,6 +91,8 @@ $(document).ready(function () {
     $("#butDiv").hide();
     $(".reset").hide();
     $("#timer").hide();
+
+
     $("#start").on("click", function () {
         $("#question").show();
         $("#butDiv").show();
@@ -103,7 +105,7 @@ $(document).ready(function () {
         $("#next").show();
         setUpNextQuestion();
         var audio = new Audio('../TriviaGame/assets/images/Stranger Things (Extended).mp3');
-        // audio.play();
+        audio.play();
 
     });
 });
@@ -122,7 +124,9 @@ function setUpNextQuestion() {
 }
 
 function question() {
-    $("#question").text(strangerThings[strangerState.currentQuestion].question);
+    var questionDisplay = (strangerState.currentQuestion + 1) + "/" + strangerThings.length;
+    $("#question").html(strangerThings[strangerState.currentQuestion].question);
+    $("#file").text(questionDisplay);
 }
 
 
@@ -150,35 +154,34 @@ function timer() {
 
 $("#choice0").on("click", function () {
     handleUserChoice(0);
-
-    console.log("1");
+    console.log("0");
 
 })
 
 $("#choice1").on("click", function () {
     handleUserChoice(1);
-    console.log("2");
+    console.log("1");
 })
 
 $("#choice2").on("click", function () {
     handleUserChoice(2);
-    console.log("3");
+    console.log("2");
 })
 
 $("#choice3").on("click", function () {
     handleUserChoice(3);
-    console.log("4");
+    console.log("3");
 })
 
 
 
 function handleUserChoice(userChoice) {
-    console.log(userChoice);
 
     if (strangerState.questionAnswered) { return; }
 
     stop();
     strangerState.questionAnswered = true;
+    console.log("Q " + strangerState.currentQuestion);
 
     if (userChoice == strangerThings[strangerState.currentQuestion].correctAnswer) {
         $("#points").text("Points : " + strangerState.points);
@@ -186,7 +189,7 @@ function handleUserChoice(userChoice) {
         $("#question").html("<h1>" + "CORRECT !!" + "</h1>");
 
         console.log("right");
-        console.log(strangerState.points);
+        console.log("score: " + strangerState.points);
 
 
     } else {
@@ -205,6 +208,13 @@ function handleUserChoice(userChoice) {
     $("#imahe").show();
     $("#butDiv").hide();
 
+    if (strangerState.currentQuestion >= strangerThings.length -1) {
+        console.log("show finish");
+        $("#next").hide();
+        // $("#finish").show();
+    }
+
+    $("#finish").show();
 }
 
 
@@ -220,21 +230,25 @@ $("#next").on("click", function () {
     setUpNextQuestion();
     $("#imahe").hide();
 
+});
 
+$("#finish").on("click", function () {
+    gameOver();
+});
 
-})
 
 
 function gameOver() {
-    if (strangerState.currentQuestion == strangerThings.length) {
-        gameStart = false;
-        $("#opening").show();
-        $("#opening").html("<h1>CONGRATULATIONS!! Your score is: </h1>" + points);
-        $("#question").hide();
-        $("#butDiv").hide();
-        $(".reset").hide();
-        $("#timer").hide();
-
-    }
+    console.log("doing game over");
+    gameStart = false;
+    $("#finish").hide();
+    // $("#opening").show();
+    $("#opening").html("<h1>CONGRATULATIONS!! Your score is: </h1>" + points);
+    $("#question").hide();
+    $("#butDiv").hide();
+    $(".reset").hide();
+    $("#timer").hide();
+    $("#trivia").hide();
+    $("#imahe").hide();
 }
 
