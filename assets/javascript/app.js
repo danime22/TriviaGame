@@ -154,24 +154,19 @@ function timer() {
 
 $("#choice0").on("click", function () {
     handleUserChoice(0);
-    console.log("0");
-
-})
+});
 
 $("#choice1").on("click", function () {
     handleUserChoice(1);
-    console.log("1");
-})
+});
 
 $("#choice2").on("click", function () {
     handleUserChoice(2);
-    console.log("2");
-})
+});
 
 $("#choice3").on("click", function () {
     handleUserChoice(3);
-    console.log("3");
-})
+});
 
 
 
@@ -208,13 +203,11 @@ function handleUserChoice(userChoice) {
     $("#imahe").show();
     $("#butDiv").hide();
 
-    if (strangerState.currentQuestion >= strangerThings.length -1) {
-        console.log("show finish");
-        $("#next").hide();
-        // $("#finish").show();
-    }
-
-    $("#finish").show();
+    // if (strangerState.currentQuestion >= strangerThings.length -1) {
+    //     console.log("show finish");
+    //     $("#next").hide();
+    //     $("#finish").show();
+    // }
 }
 
 
@@ -225,10 +218,14 @@ function stop() {
 
 $("#next").on("click", function () {
     if (!strangerState.questionAnswered) { return; }
+    if(strangerState.currentQuestion == (strangerThings.length-1)){
+        gameOver();
+    } else {
     strangerState.currentQuestion++;
     console.log("NEXT!!!");
     setUpNextQuestion();
     $("#imahe").hide();
+    }
 
 });
 
@@ -242,13 +239,33 @@ function gameOver() {
     console.log("doing game over");
     gameStart = false;
     $("#finish").hide();
-    // $("#opening").show();
-    $("#opening").html("<h1>CONGRATULATIONS!! Your score is: </h1>" + points);
-    $("#question").hide();
+    $("#file").hide();
+    $("#opening").hide();
     $("#butDiv").hide();
     $(".reset").hide();
     $("#timer").hide();
-    $("#trivia").hide();
+    $("#trivia").show();
     $("#imahe").hide();
+    $("#next").hide();
+    $("#question").hide();
+    $("#trivia").html("<h1>CONGRATULATIONS!!<br>Your score is: " + strangerState.points + "</h1><br><h2>" + getResultString()+"</h2>");
+
+    
 }
 
+
+function getResultString()
+{
+    var s = "";
+    if(strangerState.points == 10) {
+        s = "You are a true fan!!!";
+    } else if(strangerState.points >=7) {
+        s = "Not too bad!";
+    } else {
+        s = "I don't think you have watched the show.";
+        
+    }
+    $(".reset").show();
+    return s;
+
+}
